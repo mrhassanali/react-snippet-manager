@@ -16,3 +16,34 @@
 
 🚀 Simplify your workflow & never lose track of your code snippets again!
 
+
+### How to execute the script:
+
+1. Clone the repository
+2. Run the script with the following command:
+
+Permission to that file to execute:
+```bash
+chmod +x ~/react-snippet-manager/snippet-manager.sh
+```
+
+Run the script:
+```bash
+./snippet-manager.sh
+```
+
+### Adding into Alias of bash
+
+Add the following line to your `~/.bashrc` or `~/.bash_profile` file:
+
+```bash
+alias react-snippet-manager="~/react-snippet-manager/snippet-manager.sh"
+```
+
+Then, run the following command to apply the changes:
+
+```bash
+source ~/.bashrc
+```
+
+Now, you can run the script by typing `react-snippet-manager` in your terminal.
