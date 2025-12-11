@@ -260,3 +260,22 @@ export function FileUpload({
     />
   );
 }
+
+
+
+/*
+<FileUpload
+                  name={`resume`}
+                  control={form.control}
+                  maxFiles={CAREER_APPLICATION_ATTACHMENT_MAX_LENGTH}
+                  maxSize={CAREER_APPLICATION_MAX_SIZE}
+                  bucketName={CAREER_APPLICATION_BUCKET_NAME}
+                  assetUrlFn={CAREER_APPLICATION_ASSET_URL}
+                  key={`resume`}
+                  accept={{
+                    "application/pdf": [".pdf"],
+                    "application/msword": [".doc"],
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+                  }}
+                />
+                */
