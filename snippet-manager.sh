@@ -11,19 +11,13 @@ NC='\033[0m' # No Color
 # Snippet repository path
 SNIPPET_DIR="$HOME/Github/react-snippet-manager"
 
-# Function to display menu options
-display_menu() {
-    echo -e "${GREEN}1) Browse and Copy Snippet${NC}"
-    echo -e "${RED}2) Exit${NC}"
-    echo -n -e "${CYAN}Choose an option: ${NC}"
-}
-
-# Function to list languages (ignoring README.md and script)
+# Function to list languages
 list_languages() {
     echo -e "${YELLOW}Available languages:${NC}"
-    select lang in $(ls -d $SNIPPET_DIR/*/ | grep -Ev 'README.md|snippet-manager.sh' | xargs -n 1 basename) "Back"; do
-        if [[ $lang == "Back" ]]; then
-            main_menu
+    select lang in $(ls -d $SNIPPET_DIR/*/ | xargs -n 1 basename) "Exit"; do
+        if [[ $lang == "Exit" ]]; then
+            echo -e "${RED}Exiting...${NC}"
+            exit 0
         elif [[ -d "$SNIPPET_DIR/$lang" ]]; then
             list_categories "$lang"
         else
@@ -52,31 +46,17 @@ list_snippets() {
     local lang="$1"
     local category="$2"
     echo -e "${CYAN}Available snippets in $category:${NC}"
-    select snippet in $(ls $SNIPPET_DIR/$lang/$category | xargs -n 1 basename) "Back"; do
+    select snippet in $(ls "$SNIPPET_DIR/$lang/$category") "Back"; do
         if [[ $snippet == "Back" ]]; then
             list_categories "$lang"
         elif [[ -f "$SNIPPET_DIR/$lang/$category/$snippet" ]]; then
             cp "$SNIPPET_DIR/$lang/$category/$snippet" "$PWD"
             echo -e "${GREEN}Copied $snippet to $PWD${NC}"
-            list_snippets "$lang" "$category"
         else
             echo -e "${RED}Invalid choice! Try again.${NC}"
         fi
     done
 }
 
-# Main menu
-main_menu() {
-    while true; do
-        display_menu
-        read -r option
-        case $option in
-            1) list_languages ;;
-            2) echo -e "${RED}Exiting...${NC}"; exit 0 ;;
-            *) echo -e "${RED}Invalid option! Try again.${NC}" ;;
-        esac
-    done
-}
-
-# Start script
-main_menu
+# Start directly from languages
+list_languages
