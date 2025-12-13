@@ -33,7 +33,7 @@ const InputGroupField = <T extends FieldValues>({
     render={({ field, fieldState }) => (
       <Field data-invalid={fieldState.invalid}>
         {label && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
-        <InputGroup >
+        <InputGroup>
           <InputGroupInput {...field} {...inputProps} aria-invalid={fieldState.invalid}/>
           {React.isValidElement(startIcon) && <InputGroupAddon>{startIcon}</InputGroupAddon>}
 
