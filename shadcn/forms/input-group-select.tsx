@@ -52,8 +52,8 @@ const InputGroupSelect = <T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldContent>
             {label && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
+          <FieldContent>
             <Select value={field.value} onValueChange={field.onChange}>
               <SelectTrigger className="w-full" {...triggerProps}>
                 <SelectValue placeholder={placeholder} />
@@ -81,3 +81,26 @@ const InputGroupSelect = <T extends FieldValues>({
 };
 
 export default InputGroupSelect;
+
+
+
+/**
+ * Usage
+ * 
+  <InputGroupSelect
+    control={form.control}
+    name="employment_type"
+    label="Employment Type"
+    options={[
+      { value: "full_time", label: "Full Time" },
+      { value: "part_time", label: "Part Time" },
+      { value: "contract", label: "Contract" },
+      { value: "internship", label: "Internship" },
+      { value: "freelance", label: "Freelance" },
+    ]}
+    inputProps={{
+      placeholder: "Select the employment type",
+    }}
+    description="Select the employment type of the experience."
+  />
+ */
