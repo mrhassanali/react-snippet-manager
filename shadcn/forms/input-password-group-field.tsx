@@ -50,7 +50,7 @@ const InputPasswordGroupField = <T extends FieldValues>({
             )}
           </div>
           <InputGroup className="relative">
-            <InputGroupInput {...field} {...inputProps} type={isPasswordVisible ? "text" : "password"} />
+            <InputGroupInput {...field} {...inputProps} type={isPasswordVisible ? "text" : "password"} aria-invalid={fieldState.invalid} />
             <InputGroupAddon align="inline-end">
               <InputGroupButton onClick={togglePasswordVisibility}>
                 {isPasswordVisible ? <Eye size={18} /> : <EyeOff size={18} />}
