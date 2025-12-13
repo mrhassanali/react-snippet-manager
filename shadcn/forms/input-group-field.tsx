@@ -56,3 +56,17 @@ const InputGroupField = <T extends FieldValues>({
 );
 
 export default InputGroupField;
+
+/**
+ * Usage
+ * 
+  <InputGroupField
+    control={form.control}
+    name="title"
+    label="Persona Name"
+    description=""
+    inputProps={{
+      placeholder: "Enter persona name",
+    }}
+  />
+ */
