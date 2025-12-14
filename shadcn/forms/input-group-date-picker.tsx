@@ -68,3 +68,14 @@ const InputGroupDatePicker = <T extends FieldValues>({
 };
 
 export default InputGroupDatePicker;
+
+/**
+ * Usage
+ * 
+ <InputGroupDatePicker
+    control={form.control}
+    name="end_date"
+    label="End Date"
+    description="Select the end date of the experience."
+  />
+ */
