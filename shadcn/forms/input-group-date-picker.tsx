@@ -30,8 +30,8 @@ const InputGroupDatePicker = <T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldContent>
             {label && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
+          <FieldContent>
             <Popover open={isDatePopoverOpen} onOpenChange={setIsDatePopoverOpen}>
               <PopoverTrigger asChild>
                 <Button
