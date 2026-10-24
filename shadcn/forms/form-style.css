@@ -1,0 +1,10 @@
+/* Remove by default html input type number spinner */
+.no-number-spinner {
+  @apply [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none;
+}
+
+/* align sooner icon start */
+[data-sonner-toast] [data-icon] {
+  align-self: flex-start !important;
+  margin-top: 2px;
+}
