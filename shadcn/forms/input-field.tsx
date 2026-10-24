@@ -35,7 +35,7 @@ const InputField = <T extends FieldValues>({
   },
   labelProps = {},
 }: InputFieldProps<T>) => {
-  const { type, className, ...restInputProps } = inputProps;
+  const { type, className, readOnly, ...restInputProps } = inputProps;
 
   return (
     <Controller
@@ -46,14 +46,17 @@ const InputField = <T extends FieldValues>({
           {label && (
             <FieldLabel htmlFor={name} {...labelProps}>
               {label}
+              {restInputProps.required && <span className="text-red-500">*</span>}
             </FieldLabel>
           )}
           <Input
             {...field}
             {...restInputProps}
+            readOnly={readOnly}
             type={type || "text"}
             className={cn(
-              type === "number" && "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [appearance:textfield]",
+              type === "number" && "no-number-spinner",
+              readOnly && "cursor-not-allowed bg-gray-50",
               className,
             )}
             aria-invalid={fieldState.invalid}
