@@ -10,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 
 type Option = { value: string; label: string; group?: string };
 
@@ -45,7 +44,7 @@ const SelectField = <T extends FieldValues>({
   }, [options]);
 
   // Destructure placeholder for SelectTrigger, rest for SelectTrigger as well
-  const { placeholder, className, ...triggerProps } = inputProps;
+  const { placeholder, ...triggerProps } = inputProps;
 
   return (
     <Controller
@@ -53,28 +52,18 @@ const SelectField = <T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          {label && (
-            <FieldLabel htmlFor={name} className="text-gray-900 font-semibold text-sm mb-1 block">
-              {label}
-            </FieldLabel>
-          )}
+            {label && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
           <FieldContent>
             <Select value={field.value} onValueChange={field.onChange}>
-              <SelectTrigger
-                id={label ? name : undefined}
-                className={cn(
-                  className,
-                )}
-                {...triggerProps}
-              >
-                <SelectValue placeholder={placeholder} className="placeholder:text-gray-500!"/>
+              <SelectTrigger className="w-full" {...triggerProps}>
+                <SelectValue placeholder={placeholder} />
               </SelectTrigger>
               <SelectContent>
                 {grouped.map(([group, opts]) => (
                   <SelectGroup key={group ?? "ungrouped"}>
                     {group && <SelectLabel>{group}</SelectLabel>}
                     {opts.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value} className="hover:dark:bg-[#f5f5f5] hover:dark:text-black focus:dark:bg-[#f5f5f5] focus:dark:text-black">
+                      <SelectItem key={opt.value} value={opt.value}>
                         {opt.label}
                       </SelectItem>
                     ))}
@@ -92,3 +81,26 @@ const SelectField = <T extends FieldValues>({
 };
 
 export default SelectField;
+
+
+
+/**
+ * Usage
+ * 
+  <SelectField
+    control={form.control}
+    name="employment_type"
+    label="Employment Type"
+    options={[
+      { value: "full_time", label: "Full Time" },
+      { value: "part_time", label: "Part Time" },
+      { value: "contract", label: "Contract" },
+      { value: "internship", label: "Internship" },
+      { value: "freelance", label: "Freelance" },
+    ]}
+    inputProps={{
+      placeholder: "Select the employment type",
+    }}
+    description="Select the employment type of the experience."
+  />
+ */
