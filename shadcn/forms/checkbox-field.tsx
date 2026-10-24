@@ -40,7 +40,6 @@ export default CheckboxField;
 
 /**
  * Usage
- * CheckboxField
   <CheckboxField
     key={addon.id}
     control={form.control}
